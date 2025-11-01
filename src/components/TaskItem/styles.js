@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     marginVertical: 6,
     marginHorizontal: 10,
     borderRadius: 8,
-    elevation: 2, // sombra leve no Android
+    elevation: 2,
   },
   text: {
     fontSize: 16,

@@ -34,11 +34,24 @@ const styles = StyleSheet.create({
   title: {
     color: '#000',
     fontSize: 20,
-    marginTop: 20,
+    marginTop: 15,
     textAlign: 'left',
-    marginBottom: 20,
+    marginBottom: 10,
+    marginLeft: 10,
     fontWeight: 'bold',
     fontStyle: 'italic',
+  },
+  loadingContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 30,
+  },
+  emptyContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 30,
   },
 });
 

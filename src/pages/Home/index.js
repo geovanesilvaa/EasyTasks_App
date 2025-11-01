@@ -1,11 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import {
-  View,
-  Text,
-  Pressable,
-  TouchableOpacity,
-  TextInput,
-} from 'react-native';
+import React from 'react';
+import { View, Text, Pressable } from 'react-native';
+
+import Feather from 'react-native-vector-icons/Feather';
 
 import { useNavigation } from '@react-navigation/native';
 
@@ -16,9 +12,17 @@ export default function Home() {
 
   return (
     <View style={styles.container}>
-      <Text>Página Home</Text>
-      <Pressable onPress={() => navigation.navigate('Sobre')}>
-        <Text>Go Home</Text>
+      <Text style={styles.title}>
+        Easy<Text style={{ color: '#4169e1' }}>Tasks</Text>
+      </Text>
+      <Text style={{ fontWeight: 'bold', fontSize: 16, color: '#000' }}>
+        Seu aplicativo de tarefas!
+      </Text>
+      <Pressable
+        style={styles.fabButton}
+        onPress={() => navigation.navigate('Sobre')}
+      >
+        <Feather name="arrow-right-circle" size={50} color="#4169e1" />
       </Pressable>
     </View>
   );
