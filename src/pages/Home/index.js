@@ -1,5 +1,11 @@
-import React from 'react';
-import { View, Text, Button } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import {
+  View,
+  Text,
+  Pressable,
+  TouchableOpacity,
+  TextInput,
+} from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
 
@@ -11,10 +17,9 @@ export default function Home() {
   return (
     <View style={styles.container}>
       <Text>Página Home</Text>
-      <Button
-        title="Ir para Sobre"
-        onPress={() => navigation.navigate('Sobre')}
-      />
+      <Pressable onPress={() => navigation.navigate('Sobre')}>
+        <Text>Go Home</Text>
+      </Pressable>
     </View>
   );
 }

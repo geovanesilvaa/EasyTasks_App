@@ -12,8 +12,23 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="Sobre" component={Sobre} />
+        <Stack.Screen
+          name="Home"
+          component={Home}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="Sobre"
+          component={Sobre}
+          options={{
+            title: '',
+            headerStyle: {
+              backgroundColor: '#4169e1',
+            },
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
