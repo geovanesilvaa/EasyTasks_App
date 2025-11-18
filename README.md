@@ -1,97 +1,146 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+📱 EasyTasks — Aplicativo Mobile de Lista de Tarefas
 
-# Getting Started
+Um aplicativo simples, rápido e eficiente para gerenciamento de tarefas desenvolvido em React Native.
+Criado com foco em produtividade, organização e facilidade de uso no dia a dia.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+🚀 Tecnologias Utilizadas
 
-## Step 1: Start Metro
+React Native 0.74+
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+React Navigation
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+AsyncStorage (para persistência local)
 
-```sh
-# Using npm
-npm start
+UUID (para geração de IDs únicos)
 
-# OR using Yarn
-yarn start
-```
+Vector Icons
 
-## Step 2: Build and run your app
+JavaScript (ES2020+)
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+📝 Funcionalidades
 
-### Android
+➕ Adicionar tarefas
 
-```sh
-# Using npm
+🗂 Listar todas as tarefas
+
+✔️ Marcar tarefa como concluída
+
+❌ Excluir uma tarefa
+
+💾 Persistência local com AsyncStorage
+
+🎨 Interface simples e intuitiva
+
+🌙 Tema suave + design clean
+
+📂 Estrutura das pastas
+EasyTasks/
+ ├── src/
+ │   ├── components/
+ │   │      └── TaskItem/
+ │   │             ├── index.jsx
+ │   │             └── styles.js
+ │   ├── pages/
+ │   │      ├── Home/
+ │   │      ├── Sobre/
+ │   ├── routes/
+ │   │      └── index.jsx
+ │   ├── assets/
+ │   └── styles/
+ ├── App.js
+ ├── package.json
+ └── README.md
+
+ ⚙️ Instalação e Execução do Projeto
+📌 1. Pré-requisitos
+
+Você precisa ter instalado:
+
+Node.js LTS (18 ou superior)
+
+Java JDK 17+
+
+Android Studio (para emulador ou build Android)
+
+Yarn ou NPM
+
+React Native CLI
+
+📱 2. Rodando com React Native CLI
+🔹 Instale as dependências:
+npm install
+# ou
+yarn install
+
+🔹 Instale o UUID:
+npm install react-native-uuid
+
+🔹 Instale o AsyncStorage:
+npm install @react-native-async-storage/async-storage
+
+🔹 Instale os ícones:
+npm install react-native-vector-icons
+
+▶️ Executar no Android
 npm run android
 
-# OR using Yarn
-yarn android
-```
 
-### iOS
+Ou:
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
+npx react-native run-android
 
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
+🧪 3. Rodando com Expo (opcional)
 
-```sh
-bundle install
-```
+Se quiser rodar via Expo, basta instalar:
 
-Then, and every time you update your native dependencies, run:
+npm install expo
+npx expo start
 
-```sh
-bundle exec pod install
-```
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+⚠️ Mas note:
+Como o projeto usa react-native-vector-icons e AsyncStorage, o Expo precisa rodar em modo prebuild:
 
-```sh
-# Using npm
-npm run ios
+npx expo prebuild
 
-# OR using Yarn
-yarn ios
-```
+📦 Build de Produção (APK / AAB)
+Gerar APK:
+cd android
+./gradlew assembleRelease
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+Gerar AAB:
+cd android
+./gradlew bundleRelease
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
 
-## Step 3: Modify your app
+O arquivo final ficará em:
 
-Now that you have successfully run the app, let's make changes!
+android/app/build/outputs/
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+🖼 Demonstração
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+(adicione prints ou GIFs aqui quando quiser)
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+🧠 Como funciona internamente
+✔️ Adicionar tarefa
 
-## Congratulations! :tada:
+Valida texto vazio
 
-You've successfully run and modified your React Native App. :partying_face:
+Gera ID com uuid
 
-### Now what?
+Salva em memória (state)
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+Persiste no AsyncStorage
 
-# Troubleshooting
+✔️ Carregar tarefas
 
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+Ao iniciar:
 
-# Learn More
+const storedData = await AsyncStorage.getItem("@tasks");
 
-To learn more about React Native, take a look at the following resources:
+✔️ Excluir tarefa
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+Filtra pelo ID e salva novamente no AsyncStorage.
+
+✔️ Marcar como concluída
+
+Atualiza o campo status: true/false.
