@@ -44,20 +44,21 @@ npm install react-native-vector-icons
 npm install react-native-uuid
 ```
 
+
 ⚠️ Caso esteja usando Android, não esqueça de rodar:
 
 npx react-native link react-native-vector-icons
 
+
 ▶️ Executar o app no Android
 npm run android
-
-
 Ou:
-
 npx react-native run-android
 
 ▶️ Executar o app no iOS (macOS)
 npm run ios
+
+
 
 📌 Lógica Principal (Resumo Técnico)
 ✔️ Salvar tarefas
@@ -71,8 +72,8 @@ Cada tarefa possui:
 }
 
 
-As tarefas são salvas via:
 
+As tarefas são salvas via:
 await AsyncStorage.setItem('@tasks', JSON.stringify(newData));
 
 ✔️ Carregar tarefas no início
@@ -84,6 +85,8 @@ status: !item.status
 
 ✔️ Excluir tarefas
 const updated = data.filter(t => t.id !== id);
+
+
 
 🧩 Estrutura de Componentes
 Home
@@ -112,6 +115,8 @@ Texto da tarefa
 
 Estilização condicional quando concluída
 
+
+
 🎨 Design / UX
 
 Paleta baseada em Royal Blue (#4169e1)
@@ -123,6 +128,8 @@ Botões com boa área de toque
 Ícones Feather integrados
 
 Layout responsivo via Flexbox
+
+
 
 👨‍💻 Desenvolvimento
 
