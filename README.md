@@ -28,33 +28,6 @@ Permite **criar**, **listar**, **concluir** e **excluir** tarefas, mantendo tudo
 - **JavaScript (ES2025)**
 - **StyleSheet + Flexbox**
 
----
-
-## 📁 Estrutura do Projeto
-EasyTasks/
-│
-├── src/
-│ ├── components/
-│ │ └── TaskItem/
-│ │ ├── index.jsx
-│ │ └── styles.js
-│ │
-│ ├── pages/
-│ │ ├── Home/
-│ │ │ ├── index.jsx
-│ │ │ └── styles.js
-│ │ └── Sobre/
-│ │ ├── index.jsx
-│ │ └── styles.js
-│ │
-│ ├── routes/
-│ │ └── index.jsx
-│ │
-│ └── assets/
-│
-├── App.js
-└── package.json
-
 
 ---
 
@@ -62,13 +35,14 @@ EasyTasks/
 
 ### 🔧 1. Instalar dependências
 
-```bash
+```
 npm install
 npm install @react-navigation/native
 npm install @react-navigation/native-stack
 npm install @react-native-async-storage/async-storage
 npm install react-native-vector-icons
 npm install react-native-uuid
+```
 
 ⚠️ Caso esteja usando Android, não esqueça de rodar:
 
