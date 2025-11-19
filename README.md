@@ -1,141 +1,166 @@
-📱 EasyTasks Mobile — Aplicativo de Lista de Tarefas
+# 📱 EasyTasks — Aplicativo Mobile de Lista de Tarefas
 
-Um aplicativo mobile simples, rápido e intuitivo para gerenciamento de tarefas diárias, desenvolvido com React Native, AsyncStorage, React Navigation e UUID. O objetivo do EasyTasks é permitir que o usuário organize sua rotina com eficiência, oferecendo uma interface elegante e totalmente offline.
+O **EasyTasks** é um aplicativo mobile simples, rápido e intuitivo criado com **React Native**, focado em produtividade pessoal.  
+Permite **criar**, **listar**, **concluir** e **excluir** tarefas, mantendo tudo salvo localmente com **AsyncStorage**, garantindo que nenhuma tarefa seja perdida mesmo após fechar o app.
 
-🎯 Resumo do Projeto
+---
 
-O EasyTasks Mobile é um aplicativo que permite criar, listar, concluir e excluir tarefas. Todos os dados são persistidos localmente no dispositivo usando AsyncStorage, garantindo que as tarefas permaneçam salvas mesmo após fechar o app. O projeto foi construído com foco em simplicidade, performance e organização do código, seguindo boas práticas do ecossistema React Native.
+## 🚀 Funcionalidades
 
-✨ Funcionalidades
+- 📝 **Adicionar tarefas** rapidamente
+- 📋 **Listar todas as tarefas** em ordem de criação
+- ✔️ **Marcar como concluída** (toggle com estilo visual)
+- 🗑️ **Excluir tarefas** com modal de confirmação
+- 💾 **Persistência local automática** com AsyncStorage
+- 🎨 Interface minimalista e responsiva
+- ⚡ Carregamento inicial com `ActivityIndicator`
+- 🧭 Navegação entre telas usando React Navigation
 
-➕ Adicionar novas tarefas
+---
 
-✔️ Marcar tarefas como concluídas
+## 🛠️ Tecnologias Utilizadas
 
-❌ Excluir tarefas
+- **React Native**
+- **React Navigation (Stack Navigator)**
+- **AsyncStorage**
+- **UUID (para gerar IDs de tarefas)**
+- **Vector Icons (Feather Icons)**
+- **JavaScript (ES2025)**
+- **StyleSheet + Flexbox**
 
-💾 Persistência dos dados localmente com AsyncStorage
+---
 
-📱 Interface responsiva e moderna
-
-🔄 Recarregamento automático das tarefas ao abrir o app
-
-🎨 Design limpo com React Native + StyleSheet
-
-🆔 Geração de IDs únicos com UUID
-
-📂 Organização modular com componentes reutilizáveis
-
-🛠️ Tecnologias Utilizadas
-
-React Native (CLI)
-
-JavaScript / ES2025+
-
-AsyncStorage
-
-React Navigation (Stack Navigator)
-
-React Native Vector Icons / Feather Icons
-
-UUID v4
-
-Metro Bundler
-
-🗂️ Estrutura de Pastas (Organizada)
+## 📁 Estrutura do Projeto
 EasyTasks/
 │
-├── android/
-├── ios/
-├── node_modules/
-│
 ├── src/
-│   ├── components/
-│   │   └── TaskItem/
-│   │       ├── index.jsx
-│   │       └── styles.js
-│   │
-│   ├── pages/
-│   │   ├── Home/
-│   │   │   ├── index.jsx
-│   │   │   └── styles.js
-│   │   ├── Sobre/
-│   │   │   ├── index.jsx
-│   │   │   └── styles.js
-│   │
-│   ├── routes/
-│   │   └── index.jsx
-│   │
-│   └── assets/
+│ ├── components/
+│ │ └── TaskItem/
+│ │ ├── index.jsx
+│ │ └── styles.js
+│ │
+│ ├── pages/
+│ │ ├── Home/
+│ │ │ ├── index.jsx
+│ │ │ └── styles.js
+│ │ └── Sobre/
+│ │ ├── index.jsx
+│ │ └── styles.js
+│ │
+│ ├── routes/
+│ │ └── index.jsx
+│ │
+│ └── assets/
 │
 ├── App.js
-├── package.json
-└── README.md
+└── package.json
 
-🚀 Como Instalar e Rodar o Projeto
-🔧 1. Clonar o repositório
-git clone https://github.com/seuuser/easytasks-mobile.git
-cd easytasks-mobile
 
-📦 2. Instalar dependências
+---
+
+## 📲 Instalação e Execução do Projeto
+
+### 🔧 1. Instalar dependências
+
+```bash
 npm install
+npm install @react-navigation/native
+npm install @react-navigation/native-stack
+npm install @react-native-async-storage/async-storage
+npm install react-native-vector-icons
+npm install react-native-uuid
 
-🧩 3. Instalar dependências nativas
-npx pod-install
+⚠️ Caso esteja usando Android, não esqueça de rodar:
 
-▶️ 4. Rodar o app no Android
+npx react-native link react-native-vector-icons
+
+▶️ Executar o app no Android
+npm run android
+
+
+Ou:
+
 npx react-native run-android
 
-🍏 5. Rodar no iOS (Mac)
-npx react-native run-ios
+▶️ Executar o app no iOS (macOS)
+npm run ios
 
-📸 Screenshots (adicione depois)
+📌 Lógica Principal (Resumo Técnico)
+✔️ Salvar tarefas
 
-Substitua as imagens abaixo quando tiver os prints reais.
+Cada tarefa possui:
 
-<img src="./screenshots/home.png" width="350"/> <img src="./screenshots/tasks.png" width="350"/>
-🔍 Como o Aplicativo Funciona
-
-O aplicativo segue um fluxo simples:
-
-O usuário digita uma tarefa → clica no botão ✔️
-
-O app cria um objeto com:
-
-{ id: uuid.v4(), text: "Minha tarefa", status: false }
+{
+  id: uuid.v4(),
+  text: "Minha tarefa",
+  status: false
+}
 
 
-O objeto é adicionado ao array data e salvo no AsyncStorage
+As tarefas são salvas via:
 
-A lista é exibida automaticamente na tela usando FlatList
+await AsyncStorage.setItem('@tasks', JSON.stringify(newData));
 
-O usuário pode:
+✔️ Carregar tarefas no início
+const stored = await AsyncStorage.getItem('@tasks');
+setData(JSON.parse(stored));
 
-tocar no ícone para marcar como concluído
+✔️ Alternar concluída/não concluída
+status: !item.status
 
-tocar na lixeira para excluir
+✔️ Excluir tarefas
+const updated = data.filter(t => t.id !== id);
 
-O estado é sincronizado de volta no AsyncStorage após cada alteração
+🧩 Estrutura de Componentes
+Home
 
-Simples. Desempenho rápido. Totalmente offline.
+Tela de apresentação
 
-📦 Principais Arquivos
-App.js
+Botão de acesso para a lista de tarefas
 
-Responsável pela estrutura inicial e <NavigationContainer>.
+Sobre (Lista principal)
 
-src/routes/index.jsx
+Input para adicionar
 
-Onde ficam as rotas usando Stack Navigation.
+Botão para salvar
 
-src/pages/Home
+Lista renderizada com FlatList
 
-Tela inicial com navegação.
+TaskItem componetizado
 
-src/pages/Sobre
+TaskItem
 
-Tela principal onde as tarefas são gerenciadas.
+Ícone de check (toggle)
 
-src/components/TaskItem
+Texto da tarefa
 
-Componente responsável por exibir cada tarefa da lista.
+Ícone de lixeira
+
+Estilização condicional quando concluída
+
+🎨 Design / UX
+
+Paleta baseada em Royal Blue (#4169e1)
+
+Tarefas concluídas ficam mais claras
+
+Botões com boa área de toque
+
+Ícones Feather integrados
+
+Layout responsivo via Flexbox
+
+👨‍💻 Desenvolvimento
+
+Este projeto foi desenvolvido por Geovane Silva, como prática e aplicação dos estudos em:
+
+React Native
+
+Organização de projetos
+
+Gerenciamento de estado
+
+Persistência local
+
+Navegação mobile
+
