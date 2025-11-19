@@ -45,9 +45,10 @@ npm install react-native-uuid
 ```
 
 
-⚠️ Caso esteja usando Android, não esqueça de rodar:
 
+⚠️ Caso esteja usando Android, não esqueça de rodar:
 npx react-native link react-native-vector-icons
+
 
 
 ▶️ Executar o app no Android
@@ -57,6 +58,7 @@ npx react-native run-android
 
 ▶️ Executar o app no iOS (macOS)
 npm run ios
+
 
 
 
