@@ -1,146 +1,141 @@
-📱 EasyTasks — Aplicativo Mobile de Lista de Tarefas
+📱 EasyTasks Mobile — Aplicativo de Lista de Tarefas
 
-Um aplicativo simples, rápido e eficiente para gerenciamento de tarefas desenvolvido em React Native.
-Criado com foco em produtividade, organização e facilidade de uso no dia a dia.
+Um aplicativo mobile simples, rápido e intuitivo para gerenciamento de tarefas diárias, desenvolvido com React Native, AsyncStorage, React Navigation e UUID. O objetivo do EasyTasks é permitir que o usuário organize sua rotina com eficiência, oferecendo uma interface elegante e totalmente offline.
 
-🚀 Tecnologias Utilizadas
+🎯 Resumo do Projeto
 
-React Native 0.74+
+O EasyTasks Mobile é um aplicativo que permite criar, listar, concluir e excluir tarefas. Todos os dados são persistidos localmente no dispositivo usando AsyncStorage, garantindo que as tarefas permaneçam salvas mesmo após fechar o app. O projeto foi construído com foco em simplicidade, performance e organização do código, seguindo boas práticas do ecossistema React Native.
 
-React Navigation
+✨ Funcionalidades
 
-AsyncStorage (para persistência local)
+➕ Adicionar novas tarefas
 
-UUID (para geração de IDs únicos)
+✔️ Marcar tarefas como concluídas
 
-Vector Icons
+❌ Excluir tarefas
 
-JavaScript (ES2020+)
+💾 Persistência dos dados localmente com AsyncStorage
 
-📝 Funcionalidades
+📱 Interface responsiva e moderna
 
-➕ Adicionar tarefas
+🔄 Recarregamento automático das tarefas ao abrir o app
 
-🗂 Listar todas as tarefas
+🎨 Design limpo com React Native + StyleSheet
 
-✔️ Marcar tarefa como concluída
+🆔 Geração de IDs únicos com UUID
 
-❌ Excluir uma tarefa
+📂 Organização modular com componentes reutilizáveis
 
-💾 Persistência local com AsyncStorage
+🛠️ Tecnologias Utilizadas
 
-🎨 Interface simples e intuitiva
+React Native (CLI)
 
-🌙 Tema suave + design clean
+JavaScript / ES2025+
 
-📂 Estrutura das pastas
+AsyncStorage
+
+React Navigation (Stack Navigator)
+
+React Native Vector Icons / Feather Icons
+
+UUID v4
+
+Metro Bundler
+
+🗂️ Estrutura de Pastas (Organizada)
 EasyTasks/
- ├── src/
- │   ├── components/
- │   │      └── TaskItem/
- │   │             ├── index.jsx
- │   │             └── styles.js
- │   ├── pages/
- │   │      ├── Home/
- │   │      ├── Sobre/
- │   ├── routes/
- │   │      └── index.jsx
- │   ├── assets/
- │   └── styles/
- ├── App.js
- ├── package.json
- └── README.md
+│
+├── android/
+├── ios/
+├── node_modules/
+│
+├── src/
+│   ├── components/
+│   │   └── TaskItem/
+│   │       ├── index.jsx
+│   │       └── styles.js
+│   │
+│   ├── pages/
+│   │   ├── Home/
+│   │   │   ├── index.jsx
+│   │   │   └── styles.js
+│   │   ├── Sobre/
+│   │   │   ├── index.jsx
+│   │   │   └── styles.js
+│   │
+│   ├── routes/
+│   │   └── index.jsx
+│   │
+│   └── assets/
+│
+├── App.js
+├── package.json
+└── README.md
 
- ⚙️ Instalação e Execução do Projeto
-📌 1. Pré-requisitos
+🚀 Como Instalar e Rodar o Projeto
+🔧 1. Clonar o repositório
+git clone https://github.com/seuuser/easytasks-mobile.git
+cd easytasks-mobile
 
-Você precisa ter instalado:
-
-Node.js LTS (18 ou superior)
-
-Java JDK 17+
-
-Android Studio (para emulador ou build Android)
-
-Yarn ou NPM
-
-React Native CLI
-
-📱 2. Rodando com React Native CLI
-🔹 Instale as dependências:
+📦 2. Instalar dependências
 npm install
-# ou
-yarn install
 
-🔹 Instale o UUID:
-npm install react-native-uuid
+🧩 3. Instalar dependências nativas
+npx pod-install
 
-🔹 Instale o AsyncStorage:
-npm install @react-native-async-storage/async-storage
-
-🔹 Instale os ícones:
-npm install react-native-vector-icons
-
-▶️ Executar no Android
-npm run android
-
-
-Ou:
-
+▶️ 4. Rodar o app no Android
 npx react-native run-android
 
-🧪 3. Rodando com Expo (opcional)
+🍏 5. Rodar no iOS (Mac)
+npx react-native run-ios
 
-Se quiser rodar via Expo, basta instalar:
+📸 Screenshots (adicione depois)
 
-npm install expo
-npx expo start
+Substitua as imagens abaixo quando tiver os prints reais.
 
+<img src="./screenshots/home.png" width="350"/> <img src="./screenshots/tasks.png" width="350"/>
+🔍 Como o Aplicativo Funciona
 
-⚠️ Mas note:
-Como o projeto usa react-native-vector-icons e AsyncStorage, o Expo precisa rodar em modo prebuild:
+O aplicativo segue um fluxo simples:
 
-npx expo prebuild
+O usuário digita uma tarefa → clica no botão ✔️
 
-📦 Build de Produção (APK / AAB)
-Gerar APK:
-cd android
-./gradlew assembleRelease
+O app cria um objeto com:
 
-Gerar AAB:
-cd android
-./gradlew bundleRelease
+{ id: uuid.v4(), text: "Minha tarefa", status: false }
 
 
-O arquivo final ficará em:
+O objeto é adicionado ao array data e salvo no AsyncStorage
 
-android/app/build/outputs/
+A lista é exibida automaticamente na tela usando FlatList
 
-🖼 Demonstração
+O usuário pode:
 
-(adicione prints ou GIFs aqui quando quiser)
+tocar no ícone para marcar como concluído
 
-🧠 Como funciona internamente
-✔️ Adicionar tarefa
+tocar na lixeira para excluir
 
-Valida texto vazio
+O estado é sincronizado de volta no AsyncStorage após cada alteração
 
-Gera ID com uuid
+Simples. Desempenho rápido. Totalmente offline.
 
-Salva em memória (state)
+📦 Principais Arquivos
+App.js
 
-Persiste no AsyncStorage
+Responsável pela estrutura inicial e <NavigationContainer>.
 
-✔️ Carregar tarefas
+src/routes/index.jsx
 
-Ao iniciar:
+Onde ficam as rotas usando Stack Navigation.
 
-const storedData = await AsyncStorage.getItem("@tasks");
+src/pages/Home
 
-✔️ Excluir tarefa
+Tela inicial com navegação.
 
-Filtra pelo ID e salva novamente no AsyncStorage.
+src/pages/Sobre
 
-✔️ Marcar como concluída
+Tela principal onde as tarefas são gerenciadas.
 
-Atualiza o campo status: true/false.
+src/components/TaskItem
+
+Componente responsável por exibir cada tarefa da lista.
